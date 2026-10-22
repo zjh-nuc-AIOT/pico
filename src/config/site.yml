@@ -1,6 +1,6 @@
 site:
-  title: ZJH 的博客
-  subtitle: 芯片验证工程师的随笔
+  title: 张建宏的博客
+  subtitle: ic从业者的随笔
   lang: zh_CN
   themeColor:
     hue: 250
@@ -11,12 +11,11 @@ site:
     position: center
     credit:
       enable: false
-      text: ""
-      url: ""
+      text: ''
+      url: ''
   toc:
     enable: true
     depth: 2
-
 profile:
   avatar: /uploads/avatar.png
   name: ZJH
@@ -25,15 +24,23 @@ profile:
     - name: GitHub
       icon: fa6-brands:github
       url: https://github.com/
-
 navbar:
   - preset: Home
+    name: ''
+    url: ''
+    external: true
   - preset: Archive
+    name: ''
+    url: ''
+    external: true
   - preset: About
-  - name: GitHub
+    name: ''
+    url: ''
+    external: true
+  - preset: ''
+    name: GitHub
     url: https://github.com/
     external: true
-
 license:
   enable: true
   name: CC BY-NC-SA 4.0
