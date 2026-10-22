@@ -33,3 +33,104 @@ collections:
       - { label: 分类, name: category, widget: string, required: false }
       - { label: 草稿, name: draft, widget: boolean, default: false, required: false }
       - { label: 正文, name: body, widget: markdown }
+
+  - name: settings
+    label: 站点设置
+    files:
+      - name: site
+        label: 全局设置
+        file: src/config/site.yml
+        fields:
+          - label: 站点
+            name: site
+            widget: object
+            fields:
+              - { label: 标题, name: title, widget: string }
+              - { label: 副标题, name: subtitle, widget: string }
+              - label: 语言
+                name: lang
+                widget: select
+                options: [zh_CN, zh_TW, en, ja, ko, es, id, th, tr, vi]
+              - label: 主题色
+                name: themeColor
+                widget: object
+                fields:
+                  - label: 色相
+                    name: hue
+                    widget: number
+                    value_type: int
+                    min: 0
+                    max: 360
+                    hint: 0 红 / 200 青 / 250 蓝紫 / 345 粉
+                  - { label: 固定主题色（访客不可换色）, name: fixed, widget: boolean }
+              - label: 顶部横幅
+                name: banner
+                widget: object
+                fields:
+                  - { label: 启用, name: enable, widget: boolean }
+                  - { label: 图片, name: src, widget: image, choose_url: false }
+                  - label: 裁剪位置
+                    name: position
+                    widget: select
+                    options: [top, center, bottom]
+                    default: center
+                  - label: 图片版权
+                    name: credit
+                    widget: object
+                    collapsed: true
+                    fields:
+                      - { label: 显示版权信息, name: enable, widget: boolean }
+                      - { label: 文字, name: text, widget: string, required: false }
+                      - { label: 链接, name: url, widget: string, required: false }
+              - label: 文章目录
+                name: toc
+                widget: object
+                fields:
+                  - { label: 启用, name: enable, widget: boolean }
+                  - label: 最大标题层级
+                    name: depth
+                    widget: number
+                    value_type: int
+                    min: 1
+                    max: 3
+          - label: 个人资料
+            name: profile
+            widget: object
+            fields:
+              - { label: 头像, name: avatar, widget: image, choose_url: false }
+              - { label: 昵称, name: name, widget: string }
+              - { label: 简介, name: bio, widget: string }
+              - label: 社交链接
+                name: links
+                widget: list
+                fields:
+                  - { label: 名称, name: name, widget: string }
+                  - label: 图标
+                    name: icon
+                    widget: string
+                    hint: icones.js.org 上的图标代码，如 fa6-brands:github
+                  - { label: 链接, name: url, widget: string }
+          - label: 导航栏
+            name: navbar
+            widget: list
+            hint: 选「预设页面」用内置页面；不选则为自定义外链
+            fields:
+              - label: 预设页面
+                name: preset
+                widget: select
+                required: false
+                options:
+                  - { label: （自定义链接）, value: "" }
+                  - { label: 主页, value: Home }
+                  - { label: 归档, value: Archive }
+                  - { label: 关于, value: About }
+              - { label: 名称, name: name, widget: string, required: false }
+              - { label: 链接, name: url, widget: string, required: false }
+              - { label: 新窗口打开, name: external, widget: boolean, default: true, required: false }
+          - label: 版权许可
+            name: license
+            widget: object
+            fields:
+              - { label: 启用, name: enable, widget: boolean }
+              - { label: 名称, name: name, widget: string }
+              - { label: 链接, name: url, widget: string }

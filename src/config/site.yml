@@ -1,0 +1,40 @@
+site:
+  title: ZJH 的博客
+  subtitle: 芯片验证工程师的随笔
+  lang: zh_CN
+  themeColor:
+    hue: 250
+    fixed: false
+  banner:
+    enable: true
+    src: /uploads/banner.png
+    position: center
+    credit:
+      enable: false
+      text: ""
+      url: ""
+  toc:
+    enable: true
+    depth: 2
+
+profile:
+  avatar: /uploads/avatar.png
+  name: ZJH
+  bio: 芯片验证工程师，记录验证技术与生活随笔。
+  links:
+    - name: GitHub
+      icon: fa6-brands:github
+      url: https://github.com/
+
+navbar:
+  - preset: Home
+  - preset: Archive
+  - preset: About
+  - name: GitHub
+    url: https://github.com/
+    external: true
+
+license:
+  enable: true
+  name: CC BY-NC-SA 4.0
+  url: https://creativecommons.org/licenses/by-nc-sa/4.0/

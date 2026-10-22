@@ -6,29 +6,29 @@ import type {
 	SiteConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
+import yaml from "./config/site.yml";
+
+// 站点设置全部在 src/config/site.yml 里维护，可在后台 /admin 的「站点设置」中修改。
+// 修改后由 webhook 自动构建上线，无需改动代码。
+
+type NavBarItemYaml = {
+	preset?: string;
+	name?: string;
+	url?: string;
+	external?: boolean;
+};
+
+interface SiteYaml {
+	site: Omit<SiteConfig, "favicon">;
+	profile: ProfileConfig;
+	navbar: NavBarItemYaml[];
+	license: LicenseConfig;
+}
+
+const cfg = yaml as SiteYaml;
 
 export const siteConfig: SiteConfig = {
-	title: "ZJH 的博客",
-	subtitle: "芯片验证工程师的随笔",
-	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
-	themeColor: {
-		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: false, // Hide the theme color picker for visitors
-	},
-	banner: {
-		enable: true,
-		src: "/uploads/banner.png", // 在后台媒体库上传同名文件即可替换横幅
-		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
-		credit: {
-			enable: false, // Display the credit text of the banner image
-			text: "", // Credit text to be displayed
-			url: "", // (Optional) URL link to the original artwork or artist's page
-		},
-	},
-	toc: {
-		enable: true, // Display the table of contents on the right side of the post
-		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
-	},
+	...cfg.site,
 	favicon: [
 		// Leave this array empty to use the default favicon
 		// {
@@ -40,38 +40,20 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navBarConfig: NavBarConfig = {
-	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
-		LinkPreset.About,
-		{
-			name: "GitHub",
-			url: "https://github.com/", // 改成你自己的 GitHub 主页
-			external: true, // Show an external link icon and will open in a new tab
-		},
-	],
+	links: cfg.navbar.map((item) =>
+		item.preset
+			? LinkPreset[item.preset as keyof typeof LinkPreset]
+			: {
+					name: item.name ?? "",
+					url: item.url ?? "",
+					external: item.external ?? false,
+				},
+	),
 };
 
-export const profileConfig: ProfileConfig = {
-	avatar: "/uploads/avatar.png", // 在后台媒体库上传同名文件即可替换头像
-	name: "ZJH",
-	bio: "芯片验证工程师，记录验证技术与生活随笔。",
-	links: [
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github", // Visit https://icones.js.org/ for icon codes
-			// You will need to install the corresponding icon set if it's not already included
-			// `pnpm add @iconify-json/<icon-set-name>`
-			url: "https://github.com/", // 改成你自己的 GitHub 主页
-		},
-	],
-};
+export const profileConfig: ProfileConfig = cfg.profile;
 
-export const licenseConfig: LicenseConfig = {
-	enable: true,
-	name: "CC BY-NC-SA 4.0",
-	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-};
+export const licenseConfig: LicenseConfig = cfg.license;
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
 	// Note: Some styles (such as background color) are being overridden, see the astro.config.mjs file.
