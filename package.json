@@ -14,7 +14,7 @@
     "format": "biome format --write ./src",
     "lint": "biome check --write ./src",
     "preinstall": "npx only-allow pnpm",
-    "deploy": "astro build && pagefind --site dist && rm -rf /var/www/blog.zjh.mom/* && cp -a dist/. /var/www/blog.zjh.mom/"
+    "deploy-site": "astro build && pagefind --site dist && rm -rf /var/www/blog.zjh.mom/* && cp -a dist/. /var/www/blog.zjh.mom/"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",

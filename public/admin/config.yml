@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: OWNER/REPO # TODO: 改成你的 GitHub 仓库，例如 zjh/zjh_blog
+  branch: main
+
+site_url: https://blog.zjh.mom
+locale: zh
+
+# 图片统一传到 public/uploads，文章里以 /uploads/xxx 引用
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: posts
+    label: 文章
+    folder: src/content/posts
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - label: 发布日期
+        name: published
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+        picker_utc: true
+      - { label: 摘要, name: description, widget: string, required: false }
+      - { label: 封面图, name: image, widget: image, required: false, choose_url: false }
+      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 分类, name: category, widget: string, required: false }
+      - { label: 草稿, name: draft, widget: boolean, default: false, required: false }
+      - { label: 正文, name: body, widget: markdown }
