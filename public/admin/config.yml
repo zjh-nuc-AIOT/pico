@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: OWNER/REPO # TODO: 改成你的 GitHub 仓库，例如 zjh/zjh_blog
-  branch: main
+  repo: zjh-nuc-AIOT/pico
+  branch: blog
 
 site_url: https://blog.zjh.mom
 locale: zh

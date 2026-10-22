@@ -79,7 +79,7 @@ createServer((req, res) => {
 			res.writeHead(400).end("bad json");
 			return;
 		}
-		if (req.headers["x-github-event"] !== "push" || payload.ref !== "refs/heads/main") {
+		if (req.headers["x-github-event"] !== "push" || payload.ref !== "refs/heads/blog") {
 			res.writeHead(200).end("ignored");
 			return;
 		}
