@@ -1,8 +1,10 @@
 ---
-title: 你好，世界
+title: hello word
 published: 2026-10-22
-description: 博客的第一篇随笔。
-tags: [随笔]
+description: 欢迎来到张某人的博客
+image: ''
+tags:
+  - 随笔
 category: 生活
 draft: false
 ---
