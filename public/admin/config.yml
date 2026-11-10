@@ -2,6 +2,8 @@ backend:
   name: github
   repo: zjh-nuc-AIOT/pico
   branch: blog
+  # 浏览器不直连 api.github.com，走本站反代
+  api_root: https://blog.zjh.mom/github
 
 site_url: https://blog.zjh.mom
 locale: zh
