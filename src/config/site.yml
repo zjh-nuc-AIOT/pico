@@ -7,7 +7,7 @@ site:
     fixed: false
   banner:
     enable: true
-    src: /uploads/banner.png
+    src: /uploads/1000030470.jpg
     position: center
     credit:
       enable: false
@@ -17,7 +17,7 @@ site:
     enable: true
     depth: 2
 profile:
-  avatar: /uploads/avatar.png
+  avatar: /uploads/1000030471.jpg
   name: ZJH
   bio: 芯片验证工程师，记录验证技术与生活随笔。
   links:
