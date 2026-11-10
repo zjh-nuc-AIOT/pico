@@ -19,7 +19,7 @@ site:
 profile:
   avatar: /uploads/1000030471.jpg
   name: ZJH
-  bio: 芯片验证工程师，记录验证技术与生活随笔。
+  bio: 芯片验证工程师，记录验证技术与生活随笔
   links:
     - name: GitHub
       icon: fa6-brands:github
